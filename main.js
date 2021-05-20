@@ -82,7 +82,7 @@ document.querySelector(".next").addEventListener("click", () => {
 
 document.querySelector(".days").addEventListener("click", () => {
   var txt;
-  var person = prompt("Please enter your name:", "Harry Potter");
+  var person = prompt("Please enter your event:");
   if (person == null || person == "") {
     txt = "User cancelled the prompt.";
   } else {
