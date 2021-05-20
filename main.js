@@ -82,6 +82,7 @@ document.querySelector(".next").addEventListener("click", () => {
 
 document.querySelector(".days").addEventListener("click", () => {
   prompt("add your event....)
+         renderCalendar();
 }
 
 );
