@@ -81,14 +81,7 @@ document.querySelector(".next").addEventListener("click", () => {
 });
 
 document.querySelector(".days").addEventListener("click", () => {
-  var txt;
-  var person = prompt("Please enter your event:");
-  if (person == null || person == "") {
-    txt = "User cancelled the prompt.";
-  } else {
-    txt = "Hello " + person + "! How are you today?";
-  }
-  document.getElementById("days").innerHTML = txt;
+  prompt("add your event....)
 }
 
 );
