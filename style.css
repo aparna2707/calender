@@ -2,7 +2,8 @@ body {
   display: flex;
   margin-top: 0px;
   justify-content: center;
-  background:url("./img.jpg");
+/*   background:url("./img.jpg"); */
+  background:linear-gradient(220deg ,pink, rgb(153, 229, 217) );
 
 }
 button {
