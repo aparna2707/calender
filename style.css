@@ -2,8 +2,8 @@ body {
   display: flex;
   margin-top: 0px;
   justify-content: center;
-  background:url("./img.jpg");
-/*   background:linear-gradient(220deg ,pink, rgb(153, 229, 217) ); */
+  /* background:url("./img.jpg"); */
+  background:linear-gradient(220deg ,pink, rgb(153, 229, 217) );
 
 }
 button {
@@ -20,7 +20,7 @@ button {
 #header {
   padding: 10px;
   color: #ffffff;
-  font-size: 1rem;
+  font-size: 3rem;
   font-family: sans-serif;
   display: flex;
   justify-content: space-between;
@@ -34,7 +34,7 @@ button {
 
 
 #header button {
-  background-color:#ecb35c;
+  background-color:#6ddfcc;
 }
 #container {
   width: 770px;
@@ -71,7 +71,7 @@ button {
   justify-content: space-between;
 }
 .day:hover {
-  background-color: #e7a712;
+  background-color: #12c7e7;
 }
 
 .day + #currentDay {
@@ -95,7 +95,7 @@ button {
   display: none;
   z-index: 20;
   padding: 25px;
-  background-color: rgb(219, 176, 68);
+  background-color: rgb(109, 230, 193);
   box-shadow: 3px 3px 3px black;
   border-radius: 5px;
   width: 450px;
