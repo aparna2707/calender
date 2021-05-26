@@ -5,12 +5,13 @@ let events = localStorage.getItem('events') ? JSON.parse(localStorage.getItem('e
 const calendar = document.getElementById('calendar');
 const newEventModal = document.getElementById('newEventModal');
 const deleteEventModal = document.getElementById('deleteEventModal');
+
 const backDrop = document.getElementById('modalBackDrop');
 const eventTitleInput = document.getElementById('eventTitleInput');
 const weekdays = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
 
 
-function load() {
+const load=()=> {
   const dt = new Date();
 
   if (nav !== 0) {
@@ -66,31 +67,20 @@ function load() {
 
     calendar.appendChild(daySquare);
   }
-
-
-
-
-
-
-
-
 }
-function openModal(date) {
+const openModal=(date) =>{
   clicked = date;
-
   const eventForDay = events.find(e => e.date === clicked);
-
   if (eventForDay) {
     document.getElementById('eventText').innerText = eventForDay.title;
     deleteEventModal.style.display = 'block';
   } else {
     newEventModal.style.display = 'block';
   }
-
   backDrop.style.display = 'block';
 }
 
-function closeModal() {
+const closeModal=() =>{
   eventTitleInput.classList.remove('error');
   newEventModal.style.display = 'none';
   deleteEventModal.style.display = 'none';
@@ -100,10 +90,9 @@ function closeModal() {
   load();
 }
 
-function saveEvent() {
+const saveEvent=() =>{
   if (eventTitleInput.value) {
     eventTitleInput.classList.remove('error');
-
     events.push({
       date: clicked,
       title: eventTitleInput.value,
@@ -117,13 +106,13 @@ function saveEvent() {
 }
 
 
-function deleteEvent() {
+const deleteEvent=() =>{
   events = events.filter(e => e.date !== clicked);
   localStorage.setItem('events', JSON.stringify(events));
   closeModal();
 }
 
-function initButtons() {
+const initButtons=()=> {
   document.getElementById('nextButton').addEventListener('click', () => {
     nav++;
     load();
