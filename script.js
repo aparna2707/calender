@@ -9,20 +9,6 @@ const backDrop = document.getElementById('modalBackDrop');
 const eventTitleInput = document.getElementById('eventTitleInput');
 const weekdays = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
 
-function openModal(date) {
-  clicked = date;
-
-  const eventForDay = events.find(e => e.date === clicked);
-
-  if (eventForDay) {
-    document.getElementById('eventText').innerText = eventForDay.title;
-    deleteEventModal.style.display = 'block';
-  } else {
-    newEventModal.style.display = 'block';
-  }
-
-  backDrop.style.display = 'block';
-}
 
 function load() {
   const dt = new Date();
@@ -37,31 +23,31 @@ function load() {
 
   const firstDayOfMonth = new Date(year, month, 1);
   const daysInMonth = new Date(year, month + 1, 0).getDate();
-  
+
   const dateString = firstDayOfMonth.toLocaleDateString('en-us', {
     weekday: 'long',
     year: 'numeric',
     month: 'numeric',
     day: 'numeric',
   });
-  const paddingDays = weekdays.indexOf(dateString.split(', ')[0]);
+  const blankDays = weekdays.indexOf(dateString.split(', ')[0]);
 
-  document.getElementById('monthDisplay').innerText = 
+  document.getElementById('monthDisplay').innerText =
     `${dt.toLocaleDateString('en-us', { month: 'long' })} ${year}`;
 
   calendar.innerHTML = '';
 
-  for(let i = 1; i <= paddingDays + daysInMonth; i++) {
+  for (let i = 1; i <= blankDays + daysInMonth; i++) {
     const daySquare = document.createElement('div');
     daySquare.classList.add('day');
 
-    const dayString = `${month + 1}/${i - paddingDays}/${year}`;
+    const dayString = `${month + 1}/${i - blankDays}/${year}`;
 
-    if (i > paddingDays) {
-      daySquare.innerText = i - paddingDays;
+    if (i > blankDays) {
+      daySquare.innerText = i - blankDays;
       const eventForDay = events.find(e => e.date === dayString);
 
-      if (i - paddingDays === day && nav === 0) {
+      if (i - blankDays === day && nav === 0) {
         daySquare.id = 'currentDay';
       }
 
@@ -73,12 +59,35 @@ function load() {
       }
 
       daySquare.addEventListener('click', () => openModal(dayString));
-    } else {
-      daySquare.classList.add('padding');
+    }
+    else {
+      daySquare.classList.add('blank');
     }
 
-    calendar.appendChild(daySquare);    
+    calendar.appendChild(daySquare);
   }
+
+
+
+
+
+
+
+
+}
+function openModal(date) {
+  clicked = date;
+
+  const eventForDay = events.find(e => e.date === clicked);
+
+  if (eventForDay) {
+    document.getElementById('eventText').innerText = eventForDay.title;
+    deleteEventModal.style.display = 'block';
+  } else {
+    newEventModal.style.display = 'block';
+  }
+
+  backDrop.style.display = 'block';
 }
 
 function closeModal() {
@@ -106,6 +115,7 @@ function saveEvent() {
     eventTitleInput.classList.add('error');
   }
 }
+
 
 function deleteEvent() {
   events = events.filter(e => e.date !== clicked);
